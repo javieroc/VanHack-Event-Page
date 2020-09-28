@@ -1,0 +1,130 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #303540;
+  font-family: 'Roboto', sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  background-color: #507EB3;
+  color: white;
+}
+
+.events {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.event {
+  border-radius: 10px;
+  color: #262621;
+  width: 20rem;
+  height: 25rem;
+  margin: 10px;
+  padding: 15px;
+  box-sizing: border-box;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.meetup {
+  background-color: #FFF5E8;
+}
+
+.meetup h3 {
+  font-family: 'Pacifico', cursive;
+  color: #FF324D;
+}
+
+.leap {
+  background-color: #F0DB9E;
+}
+
+.leap h3 {
+  font-family: 'Ubuntu', sans-serif;
+  font: bold;
+  transform: skew(-20deg);
+  background-color: #262621;
+  color: #F0DB9E;
+  display: inline-block;
+  padding: 5px;
+}
+
+.mission {
+  background-color: #507EB3;
+  color: #FFF5E8;
+}
+
+.van-hackaton {
+  background-color: #404040;
+  color: #FFF5E8;
+}
+
+.van-hackaton h3 {
+  font-family: 'Orbitron', sans-serif;
+  color: #98BF0A;
+}
+
+.webinar {
+  background-color: #FFF5E8;
+}
+
+.webinar h3 {
+  color: #DB7685;
+  font-family: 'Roboto', sans-serif;
+}
+
+.webinar.premium h3 span {
+  background-color: #DB7685;
+  color: #FFF5E8;
+  padding: 2px;
+  border-radius: 5px;
+}
+
+.button {
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.button:focus {
+  outline: 0;
+}
+
+.button.dark {
+  border: 2px solid;
+  background-color: #404040;
+  border-color: #404040;
+  color: #FFF5E8;
+}
+
+.button.dark:hover {
+  background-color: #FFF5E8;
+  color: #404040;
+}
+
+.button.light {
+  border: 2px solid;
+  background-color: #FFF5E8;
+  border-color: #FFF5E8;
+  color: #404040;
+}
+
+.button.light:hover {
+  background-color: #404040;
+  color: #FFF5E8;
+}
