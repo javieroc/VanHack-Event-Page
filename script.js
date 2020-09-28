@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  const eventsAlreadyApplied = JSON.parse(localStorage.getItem('events')) || [];
+
   const eventTypes = [
     {
       name: 'webinar',
@@ -27,12 +29,13 @@ $(document).ready(function() {
     },
     {
       name: 'mission',
-      label: 'Mission 🚀 🚀',
+      label: 'Mission',
       theme: 'light',
     },
   ];
 
-  const events = Array(12).fill(0).map((event) => ({
+  const events = Array(12).fill(0).map((event, index) => ({
+    id: index,
     type: eventTypes[Math.floor(Math.random() * eventTypes.length)],
     name: 'This is a Event',
     description: [`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -66,9 +69,9 @@ $(document).ready(function() {
 
   const $events = $('.events');
 
-  events.forEach((event, index) => {
+  $.each(events, function (_, event) {
     $events.append(`
-      <article class="event ${event.type.name}">
+      <article id="${event.id}" class="event ${event.type.name}">
         <div>
           <h3>${event.type.label}</h3>
         </div>
@@ -77,24 +80,42 @@ $(document).ready(function() {
           <div>Event Date:${event.date}</div>
           <div>Deadline: ${event.deadline}</div>
         </div>
-        <div>
-          <button id="${index}" class="button ${event.type.theme}">See detail</button>
+        <div class="event-footer">
+          <button id="${event.id}" class="button ${event.type.theme}">See detail</button>
         </div>
       </article>
     `)
-  })
+  });
 
   const $modal = $('.modal');
-  const $buttons = $('.button').click(function() {
+  $('.button').click(function() {
     const id = $(this).attr('id');
     $('.modal-header').html(`
-      <h1>Event: ${events[id].name}</h1>
+      <div>
+        <h1>Event: ${events[id].name}</h1>
+        <h4>Date of event: ${events[id].date}</h4>
+        <h4>Deadline: ${events[id].deadline}</h4>
+      </div>
     `)
     const paragraphs = events[id].description.map((paragraph) => (`
       <p>${paragraph}</p>
     `))
     $('.modal-body').html(paragraphs.join(''))
+
+    $('.modal-footer').html(`
+      <button id="${id}" class="apply">Apply</button>
+    `)
     $modal.show()
+  });
+
+  $(document).on('click', '.apply', function() {
+    const id = parseInt($(this).attr('id'));
+    if (!eventsAlreadyApplied.includes(id) && confirm('Confirm application')) {
+      eventsAlreadyApplied.push(id);
+      localStorage.setItem('events', JSON.stringify(eventsAlreadyApplied));
+      $(`article#${id} .event-footer`).append('<span class="fa fa-star" />');
+      $modal.hide();
+    }
   });
 
   window.onclick = function(event) {

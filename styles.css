@@ -38,6 +38,12 @@ html, body {
   overflow: hidden;
 }
 
+.event-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .meetup {
   background-color: #FFF5E8;
 }
@@ -146,10 +152,30 @@ html, body {
 /* Modal Content */
 .modal-content {
   background-color: #fefefe;
+  color: #303540;
   margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
   width: 80%;
+}
+
+.modal-header h1 {
+  background-color: #507EB3;
+  color: #fefefe;
+  padding: 20px;
+  margin: 0;
+}
+
+.modal-header h4 {
+  padding: 0 20px;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
 }
 
 /* The Close Button */
@@ -165,4 +191,25 @@ html, body {
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+.apply {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border: 2px solid #4CAF50;
+  color: #fefefe
+}
+
+.apply:hover {
+  background-color: #fefefe;
+  color: black;
 }
